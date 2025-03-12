@@ -103,15 +103,16 @@ jobs:
         run: echo "${{ steps.checkin.outputs.result }}"
 ```
 
-###（🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹GLaDOS 自动签到的两种方法：
+### 🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹GLaDOS 自动签到的两种方法：
 
 以下是针对 **GLaDOS 自动签到**的代码生成与实现方案，结合搜索结果的两种主流方法（GitHub Actions 和青龙面板脚本）进行说明：
 
-#### 方法一：通过 **Python 脚本 + GitHub Actions** 实现自动签到
-##### 1. **获取 GLaDOS 的 Cookie**
+#### 方法一：通过 'Python 脚本 + GitHub Actions' 实现自动签到
+##### 1. 获取 GLaDOS 的 Cookie
 🚗登录 GLaDOS 并打开签到页面：`https://glados.space/console/checkin`。
-🚗按下 `F12` 打开浏览器开发者工具，切换到 **Network（网络）** 标签页。
+🚗按下 `F12` 打开浏览器开发者工具，切换到 **Network（网络）** 标签页。	
 🚗点击页面上的 **Checkin（签到）** 按钮，找到名为 `checkin` 或 `status` 的请求，在 **Headers** 中复制完整的 `Cookie` 值（格式类似 `koa:sess=xxxx; koa:sess.sig=xxxx`）。
+
 
 ##### 2. **编写 Python 脚本**
 ```python
