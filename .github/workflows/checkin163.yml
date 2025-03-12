@@ -23,7 +23,7 @@ jobs:
 
       - name: Run checkin
         env:
-          GLADOS_COOKIE: ${{ secrets.GLADOS_COOKIE }}
+          GLADOS_COOKIE: ${{ secrets.YLTHREE_COOKIE }}
         run: |
           result=$(python checkin.py)
           echo "result=$result" >> $GITHUB_OUTPUT
