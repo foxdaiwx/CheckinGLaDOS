@@ -139,40 +139,40 @@ print(message)
 ```
 
 ### 3. 部署到 GitHub Actions
-🚗Fork 仓库：访问 [xianzhichen/checkin](https://github.com/xianzhichen/checkin)，点击右上角 `Fork`。
-🚗添加 Cookie：在仓库的 `Settings → Secrets → Actions` 中新建 Secret：
-	Name: `GLADOS`
-	Value: 复制的 Cookie 值。 
-🚗启用定时任务：GitHub Actions 已预设每天 00:10（UTC+8）自动执行，无需修改代码。
+	🚗Fork 仓库：访问 [xianzhichen/checkin](https://github.com/xianzhichen/checkin)，点击右上角 `Fork`。
+	🚗添加 Cookie：在仓库的 `Settings → Secrets → Actions` 中新建 Secret：
+		Name: `GLADOS`
+		Value: 复制的 Cookie 值。 
+	🚗启用定时任务：GitHub Actions 已预设每天 00:10（UTC+8）自动执行，无需修改代码。
 
 ---
 
 ## 方法二：通过 '青龙面板' 实现自动签到
 ### 1. 安装青龙面板
-   • 参考青龙面板官方文档部署环境（支持 Docker、Linux 等）。
+	• 参考青龙面板官方文档部署环境（支持 Docker、Linux 等）。
 
 ### 2. 添加 GLaDOS 签到脚本
-   • 在青龙面板的 **脚本管理** 中，添加仓库：
-     ◦ **名称**：`GLaDOS_Checkin`
-     ◦ **类型**：`公开仓库`
-     ◦ **链接**：`https://github.com/hennessey-v/GlaDOS_Checkin_ql.git`
-   • 拉取脚本后，在 **环境变量** 中添加 `GLADOS_COOKIE`（值为 Cookie）。
+	• 在青龙面板的 **脚本管理** 中，添加仓库：
+		◦ **名称**：`GLaDOS_Checkin`
+		◦ **类型**：`公开仓库`
+		◦ **链接**：`https://github.com/hennessey-v/GlaDOS_Checkin_ql.git`
+	• 拉取脚本后，在 **环境变量** 中添加 `GLADOS_COOKIE`（值为 Cookie）。
 
 ### 3. 设置定时任务
-   • 在青龙面板的 **定时任务** 中新建任务：
-     ◦ **名称**：`GLaDOS 自动签到`
-     ◦ **命令**：`task GlaDOS_Checkin_ql/checkin.py`
-     ◦ **定时规则**：`0 0 * * *`（每天 0 点执行）。
+	• 在青龙面板的 **定时任务** 中新建任务：
+		◦ **名称**：`GLaDOS 自动签到`
+		◦ **命令**：`task GlaDOS_Checkin_ql/checkin.py`
+		◦ **定时规则**：`0 0 * * *`（每天 0 点执行）。
 
 ---
 
 ### 补充说明
-1. **通知推送**（可选）：
-   • 使用 **PushPlus** 微信通知：在 GitHub Actions 或青龙面板中添加 `NOTIFY` Secret，填入 PushPlus 的 Token。
-2. **安全性**：
-   • **Cookie 需保密**，避免泄露到公开仓库 .
-3. **合规性**：
-   • 确保符合 GLaDOS 服务条款，避免频繁请求导致封号。
+	1. **通知推送**（可选）：
+	   • 使用 **PushPlus** 微信通知：在 GitHub Actions 或青龙面板中添加 `NOTIFY` Secret，填入 PushPlus 的 Token。
+	2. **安全性**：
+	   • **Cookie 需保密**，避免泄露到公开仓库 .
+	3. **合规性**：
+		• 确保符合 GLaDOS 服务条款，避免频繁请求导致封号。
 
 ---
 
