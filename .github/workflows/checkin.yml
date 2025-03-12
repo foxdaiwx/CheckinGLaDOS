@@ -3,6 +3,7 @@ name: GLaDOS Auto Checkin
 on:
   schedule:
     - cron: '35 14 * * *'  # UTC时间14:35（北京时间22:35）
+    - cron: '20 17 * * *'  # UTC时间17:20（北京时间晚8小时，1:20）
   workflow_dispatch:  # 允许手动触发 不要用push触发，否则每次修改代码后push都会执行，小心被平台判为机器人
 
 jobs:
