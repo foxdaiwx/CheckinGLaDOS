@@ -159,10 +159,10 @@ print(message)
 	• 拉取脚本后，在 **环境变量** 中添加 `GLADOS_COOKIE`（值为 Cookie）。
 
 ### 3. 设置定时任务
-	• 在青龙面板的 **定时任务** 中新建任务：
-	  ◦ **名称**：`GLaDOS 自动签到`
-	  ◦ **命令**：`task GlaDOS_Checkin_ql/checkin.py`
-	  ◦ **定时规则**：`0 0 * * *`（每天 0 点执行）。
+• 在青龙面板的 **定时任务** 中新建任务：
+◦ **名称**：`GLaDOS 自动签到`
+◦ **命令**：`task GlaDOS_Checkin_ql/checkin.py`
+◦ **定时规则**：`0 0 * * *`（每天 0 点执行）。
 
 ---
 
