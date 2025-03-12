@@ -1,35 +1,30 @@
 ## GLaDos Auto Checkin
 
-# 第1层
-## 第2层
-### 第3层
-#### 第4层
 
- 
-# 一、 配置步骤：
+### 一、 配置步骤：
    1. 登录GLaDOS网站，通过浏览器开发者工具获取Cookie
    2. 在GitHub仓库的 Settings > Secrets 中添加名为 `GLADOS_COOKIE` 的加密secret
    3. 将两个文件提交到仓库
 
-# 二、​获取 GLaDOS 的 Cookie
+### 二、​获取 GLaDOS 的 Cookie
 	1. 登录 GLaDOS 并打开签到页面：https://glados.space/console/checkin。
 	2. 按下 F12 打开浏览器开发者工具，切换到 ​Network（网络）​ 标签页。
 	3. 点击页面上的 ​Checkin（签到）​ 按钮，找到名为 checkin 或 status 的请求，在 ​Headers 中复制完整的 Cookie 值（格式类似 koa:sess=xxxx; koa:sess.sig=xxxx）。
 
-# 三、注意事项：
+### 三、注意事项：
 1. Cookie有效期通常为1个月，到期后需要更新
 2. 北京时间22:00对应UTC时间14:00
 3. 建议先手动触发工作流测试功能
 4. 不要公开分享你的Cookie信息
 5. 如果网站接口变更需要同步更新脚本
 
-# 四、验证：可以通过以下方式验证结果：
+### 四、验证：可以通过以下方式验证结果：
 1. 在GitHub Actions的运行日志中查看输出
 2. 登录GLaDOS网站确认签到状态
 3. 检查是否收到签到成功的邮件通知（如果网站有此功能）
 为了实现GLaDOS的自动签到，请按以下步骤操作：
 
-# 五、原始代码
+### 五、原始代码
 1. 创建Python脚本 (`checkin.py`)：
 
 ```python
@@ -109,10 +104,10 @@ jobs:
         run: echo "${{ steps.checkin.outputs.result }}"
 ```
 
-##（🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹补充：）
+###（🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹补充：）
 
 
-# GLaDOS 自动签到的两种方法：
+## GLaDOS 自动签到的两种方法：
 
 以下是针对 **GLaDOS 自动签到**的代码生成与实现方案，结合搜索结果的两种主流方法（GitHub Actions 和青龙面板脚本）进行说明：
 
