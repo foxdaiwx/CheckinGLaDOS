@@ -170,7 +170,7 @@ print(message)
 1. **通知推送**（可选）：
    • 使用 **PushPlus** 微信通知：在 GitHub Actions 或青龙面板中添加 `NOTIFY` Secret，填入 PushPlus 的 Token。
 2. **安全性**：
-   • **Cookie 需保密**，避免泄露到公开仓库。
+   • **Cookie 需保密**，避免泄露到公开仓库 .
 3. **合规性**：
    • 确保符合 GLaDOS 服务条款，避免频繁请求导致封号。
 
