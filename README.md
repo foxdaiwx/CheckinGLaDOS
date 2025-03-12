@@ -139,11 +139,11 @@ print(message)
 ```
 
 ### 3. 部署到 GitHub Actions
-🚗**Fork 仓库**：访问 [xianzhichen/checkin](https://github.com/xianzhichen/checkin)，点击右上角 `Fork`。
-🚗**添加 Cookie**：在仓库的 `Settings → Secrets → Actions` 中新建 Secret：
-	**Name**: `GLADOS`
-	**Value**: 复制的 Cookie 值。 
-🚗**启用定时任务**：GitHub Actions 已预设每天 00:10（UTC+8）自动执行，无需修改代码。
+🚗Fork 仓库：访问 [xianzhichen/checkin](https://github.com/xianzhichen/checkin)，点击右上角 `Fork`。
+🚗添加 Cookie：在仓库的 `Settings → Secrets → Actions` 中新建 Secret：
+	Name: `GLADOS`
+	Value: 复制的 Cookie 值。 
+🚗启用定时任务：GitHub Actions 已预设每天 00:10（UTC+8）自动执行，无需修改代码。
 
 ---
 
