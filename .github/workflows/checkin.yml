@@ -1,0 +1,31 @@
+name: GLaDOS Auto Checkin
+
+on:
+  schedule:
+    - cron: '0 14 * * *'  # UTC时间14:00（北京时间22:00）
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run checkin
+        env:
+          GLADOS_COOKIE: ${{ secrets.GLADOS_COOKIE }}
+        run: |
+          result=$(python checkin.py)
+          echo "result=$result" >> $GITHUB_OUTPUT
+
+      - name: Show result
+        run: echo "${{ steps.checkin.outputs.result }}"
