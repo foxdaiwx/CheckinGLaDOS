@@ -103,18 +103,19 @@ jobs:
         run: echo "${{ steps.checkin.outputs.result }}"
 ```
 
-### 🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹GLaDOS 自动签到的两种方法：
+---
 
+# 🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹GLaDOS 自动签到的两种方法：
 以下是针对 **GLaDOS 自动签到**的代码生成与实现方案，结合搜索结果的两种主流方法（GitHub Actions 和青龙面板脚本）进行说明：
 
-#### 方法一：通过 'Python 脚本 + GitHub Actions' 实现自动签到
-##### 1. 获取 GLaDOS 的 Cookie
-🚗登录 GLaDOS 并打开签到页面：`https://glados.space/console/checkin`。
-🚗按下 `F12` 打开浏览器开发者工具，切换到 **Network（网络）** 标签页。	
-🚗点击页面上的 **Checkin（签到）** 按钮，找到名为 `checkin` 或 `status` 的请求，在 **Headers** 中复制完整的 `Cookie` 值（格式类似 `koa:sess=xxxx; koa:sess.sig=xxxx`）。
+## 方法一：通过 'Python 脚本 + GitHub Actions' 实现自动签到
+### 1. 获取 GLaDOS 的 Cookie
+	🚗登录 GLaDOS 并打开签到页面：`https://glados.space/console/checkin`。
+	🚗按下 `F12` 打开浏览器开发者工具，切换到 **Network（网络）** 标签页。	
+	🚗点击页面上的 **Checkin（签到）** 按钮，找到名为 `checkin` 或 `status` 的请求，在 **Headers** 中复制完整的 `Cookie` 值（格式类似 `koa:sess=xxxx; koa:sess.sig=xxxx`）。
 
 
-##### 2. **编写 Python 脚本**
+### 2. 编写 Python 脚本
 ```python
 import requests
 
@@ -137,27 +138,27 @@ else:
 print(message)
 ```
 
-##### 3. **部署到 GitHub Actions**
-**Fork 仓库**：访问 [xianzhichen/checkin](https://github.com/xianzhichen/checkin)，点击右上角 `Fork`。
-**添加 Cookie**：在仓库的 `Settings → Secrets → Actions` 中新建 Secret：
+### 3. 部署到 GitHub Actions
+🚗**Fork 仓库**：访问 [xianzhichen/checkin](https://github.com/xianzhichen/checkin)，点击右上角 `Fork`。
+🚗**添加 Cookie**：在仓库的 `Settings → Secrets → Actions` 中新建 Secret：
 	**Name**: `GLADOS`
 	**Value**: 复制的 Cookie 值。 
-**启用定时任务**：GitHub Actions 已预设每天 00:10（UTC+8）自动执行，无需修改代码。
+🚗**启用定时任务**：GitHub Actions 已预设每天 00:10（UTC+8）自动执行，无需修改代码。
 
 ---
 
-#### 方法二：通过 **青龙面板** 实现自动签到
-##### 1. **安装青龙面板**
+## 方法二：通过 '青龙面板' 实现自动签到
+### 1. 安装青龙面板
    • 参考青龙面板官方文档部署环境（支持 Docker、Linux 等）。
 
-##### 2. **添加 GLaDOS 签到脚本**
+### 2. 添加 GLaDOS 签到脚本
    • 在青龙面板的 **脚本管理** 中，添加仓库：
      ◦ **名称**：`GLaDOS_Checkin`
      ◦ **类型**：`公开仓库`
      ◦ **链接**：`https://github.com/hennessey-v/GlaDOS_Checkin_ql.git`
    • 拉取脚本后，在 **环境变量** 中添加 `GLADOS_COOKIE`（值为 Cookie）。
 
-##### 3. **设置定时任务**
+### 3. 设置定时任务
    • 在青龙面板的 **定时任务** 中新建任务：
      ◦ **名称**：`GLaDOS 自动签到`
      ◦ **命令**：`task GlaDOS_Checkin_ql/checkin.py`
@@ -165,7 +166,7 @@ print(message)
 
 ---
 
-#### 补充说明
+### 补充说明
 1. **通知推送**（可选）：
    • 使用 **PushPlus** 微信通知：在 GitHub Actions 或青龙面板中添加 `NOTIFY` Secret，填入 PushPlus 的 Token。
 2. **安全性**：
