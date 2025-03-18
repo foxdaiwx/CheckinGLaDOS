@@ -30,7 +30,7 @@ jobs:
           echo "result=$result" >> $GITHUB_OUTPUT
 
       - name: upload result file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: checkin-result
           path: result.txt
