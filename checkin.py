@@ -30,10 +30,11 @@ def check_in():
         if result['code'] == 0:     
             #获取代码运行结果的信息
             message = result['message']
-            #获取积分总点数
+            #获取积分获取值点数和总点数
+            change = result['list'][0]['change']
             points = result['list'][0]['balance']
-            #回复信息和积分总点数
-            return f"{message} - 剩余天数: {points}"
+            #回复前面获取的信息和各个值
+            return f"{message} - 获取积分: {change} - 总积分: {points}"
         #否则，code<>0，则显示出错信息，比如Invalid Token，可能是Cookie过期或不对
         return f"签到失败: {result.get('message', '未知错误')}"
     #其他情况，比如代码出错、网络问题等，比如connection error；
