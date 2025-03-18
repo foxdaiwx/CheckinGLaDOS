@@ -42,4 +42,6 @@ def check_in():
 
 if __name__ == '__main__':
     print(check_in())
-    
+     # 将结果写入文本文件
+    with open("checkin_result.txt", "w", encoding="utf-8") as file:
+        file.write(result)
