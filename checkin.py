@@ -11,7 +11,7 @@ def check_in():
     referer = "https://glados.space/console/checkin"
     
     payload = {
-        'token': "glados.network"
+        'token': "glados.one"
     }
     
     headers = {
@@ -19,7 +19,7 @@ def check_in():
         'origin': origin,
         'referer': referer,
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
-        'content-type': 'application/json'
+        'content-type': 'application/json; charset=utf-8'
     }
 
     try:
@@ -30,11 +30,11 @@ def check_in():
         if result['code'] == 0:     
             #获取代码运行结果的信息
             message = result['message']
-            #获取天数
-            days = result['list'][0]['balance']
-            #回复信息和天数
-            return f"{message} - 剩余天数: {days}"
-        #否则，code<>0，则显示出错信息，比如Invalid Token，可能是Cookie过期货不对
+            #获取积分总点数
+            points = result['list'][0]['balance']
+            #回复信息和积分总点数
+            return f"{message} - 剩余天数: {points}"
+        #否则，code<>0，则显示出错信息，比如Invalid Token，可能是Cookie过期或不对
         return f"签到失败: {result.get('message', '未知错误')}"
     #其他情况，比如代码出错、网络问题等，比如connection error；
     except Exception as e:
