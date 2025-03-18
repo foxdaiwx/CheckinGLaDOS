@@ -45,3 +45,4 @@ if __name__ == '__main__':
      # 将结果写入文本文件
     with open("checkin_result.txt", "w", encoding="utf-8") as file:
         file.write(result)
+        
