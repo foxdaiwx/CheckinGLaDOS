@@ -2,8 +2,8 @@ name: Checkin Hotmail 21:10 1:20
 
 on:
   schedule:
-    - cron: '10 13 * * *'  # UTC时间14:35（北京时间21:10）
-    - cron: '20 17 * * *'  # UTC时间17:20（北京时间晚8小时，1:20）
+    - cron: '35 14 * * *'  # UTC时间14:35（北京时间22:35）
+    - cron: '20 17 * * *'  # UTC时间17:20（北京时间1:20，晚8小时）
   workflow_dispatch:  # 允许手动触发 不要用push触发，否则每次修改代码后push都会执行，小心被平台判为机器人
 
 jobs:
@@ -11,22 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2       #从github获取code
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v2   #安装python V3.x版本
         with:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests       #安装依赖
 
       - name: Run checkin
         env:
           GLADOS_COOKIE: ${{ secrets.HOTMAIL_COOKIE }}
-        run: |
-          result=$(python checkin.py)
-          echo "result=$result" >> $GITHUB_OUTPUT
+        run: |                          #管道符“|”，表示下面有多条命令；
+          result=$(python checkin.py)   #运行主程序checkin.py
+          echo "result=$result" >> $GITHUB_OUTPUT   #结果传出
 
       - name: Show result
-        run: echo "${{ steps.checkin.outputs.result }}"
+        run: echo "${{ steps.checkin.outputs.result }}" #显示结果
