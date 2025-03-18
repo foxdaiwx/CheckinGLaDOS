@@ -26,7 +26,15 @@ jobs:
           GLADOS_COOKIE: ${{ secrets.YLTHREE_COOKIE }}
         run: |
           result=$(python checkin.py)
+          echo "$result" > result.txt
           echo "result=$result" >> $GITHUB_OUTPUT
 
+      - name: upload result file
+        uses: actions/upload-artifact@v2
+        with:
+          name: checkin-result
+          path: result.txt
+      
       - name: Show result
         run: echo "${{ steps.checkin.outputs.result }}"
+        
