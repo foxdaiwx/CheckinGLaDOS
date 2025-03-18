@@ -1,0 +1,36 @@
+{code: 0, points: 3, message: "Checkin! Got 3 Points",…}
+code: 0
+list: [{id: 101441614, user_id: 335009, time: 1742304331702, asset: "points",…},…]
+0: {id: 101441614, user_id: 335009, time: 1742304331702, asset: "points",…}
+asset:"points"
+balance:"87.0000000000000000"
+business:"system:checkin:2025-03-18"
+change:"3.00000000"
+detail:"checkin:2025-03-18-335009"
+id: 101441614
+time:1742304331702
+userid:335009
+1: {id: 101007187, user_id: 335009, time: 1741883656809, asset: "points",…}
+asset: "points"
+balance: "84.0000000000000000"
+business: "system:checkin:2025-03-14"
+change: "2.00000000"
+detail: "checkin:2025-03-14-335009"
+id: 101007187
+time: 1741883656809
+user_id: 335009
+2: {id: 100919080, user_id: 335009, time: 1741797163916, asset: "points",…}
+3: {id: 100830426, user_id: 335009, time: 1741709646801, asset: "points",…}
+4: {id: 100743178, user_id: 335009, time: 1741625517835, asset: "points",…}
+5: {id: 100657870, user_id: 335009, time: 1741568152518, asset: "points",…}
+6: {id: 100486881, user_id: 335009, time: 1741409161494, asset: "points",…}
+7: {id: 100399305, user_id: 335009, time: 1741317766596, asset: "points",…}
+8: {id: 100215660, user_id: 335009, time: 1741106932840, asset: "points",…}
+9: {id: 100126343, user_id: 335009, time: 1741019779415, asset: "points",…}
+10: {id: 100038866, user_id: 335009, time: 1740935865446, asset: "points",…}
+11: {id: 99785483, user_id: 335009, time: 1740716744317, asset: "points",…}
+12: {id: 99604977, user_id: 335009, time: 1740524117224, asset: "points",…}
+13: {id: 99171042, user_id: 335009, time: 1740069397085, asset: "points",…}
+14: {id: 97850853, user_id: 335009, time: 1738727284503, asset: "points",…}
+message: "Checkin! Got 3 Points"
+points: 3

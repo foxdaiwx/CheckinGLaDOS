@@ -27,14 +27,13 @@ def check_in():
         result = response.json()
         
         #Code=0,表示代码运行成功，然后获取关联信息并显示
-        if result['code'] == 0:     
+        if result['code'] == 0:     #结果可以在页面F12，按checkin，在tab的network-preview 和 response中查看 
             #获取代码运行结果的信息
             message = result['message']
-            #获取积分获取值点数和总点数
-            change = result['list'][0]['change']
+            #获取积分总点数
             points = result['list'][0]['balance']
             #回复前面获取的信息和各个值
-            return f"{message} - 获取积分: {change} - 总积分: {points}"
+            return f"{message} - 总积分: {points}"
         #否则，code<>0，则显示出错信息，比如Invalid Token，可能是Cookie过期或不对
         return f"签到失败: {result.get('message', '未知错误')}"
     #其他情况，比如代码出错、网络问题等，比如connection error；
