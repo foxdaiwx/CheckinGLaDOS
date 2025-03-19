@@ -39,7 +39,9 @@ def check_in():
         return f"签到失败: {result.get('message', '未知错误')}"
     #其他情况，比如代码出错、网络问题等，比如connection error；
     except Exception as e:
-        return f"请求异常: {str(e)}"
+        points = result['list'][0]['balance']
+        userid = result['list'][0]['user_id']
+        return f"请求异常: {str(e)},Userid: {userid}, 总积分:{points}"
 
 if __name__ == '__main__':
     result = check_in()
