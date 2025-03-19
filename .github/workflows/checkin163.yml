@@ -1,8 +1,7 @@
-name: Checkin 163 20:35 1:30
+name: Checkin 163 @1:30
 
 on:
   schedule:
-    - cron: '35 11 * * *'  # UTC时间14:35（北京时间20:35）
     - cron: '30 16 * * *'  # UTC时间17:20（北京时间晚8小时，1:30）
   workflow_dispatch:  # 允许手动触发 不要用push触发，否则每次修改代码后push都会执行，小心被平台判为机器人
 
@@ -25,16 +24,32 @@ jobs:
         env:
           GLADOS_COOKIE: ${{ secrets.YLTHREE_COOKIE }}
         run: |
-          result=$(python checkin.py)
-          echo "$result" > result.txt
-          echo "result=$result" >> $GITHUB_OUTPUT
-
-      - name: upload result file
+          python checkin.py > workflow_result.txt
+        working-directory: ./ #根据需要调整工作目录
+      
+      - name: Append to Summary file
+        run: |
+          echo "Appending new result to checkin_result.txt" >> checkin_result.txt
+          cat workflow_result.txt >> checkin_result.txt
+        working-directory: ./ #根据需要调整工作目录
+          
+      - name: Upload  Summary File 
         uses: actions/upload-artifact@v4
         with:
-          name: checkin-result
-          path: result.txt
+          name: checkin_result
+          path: checkin_result.txt
+
+        #以下是之前的Code，暂时保留
+        #  result=$(python checkin.py)
+        #  echo "$result" > result.txt
+        #  echo "result=$result" >> $GITHUB_OUTPUT
+
+      #- name: upload result file
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: checkin-result
+      #    path: result.txt
       
-      - name: Show result
-        run: echo "${{ steps.checkin.outputs.result }}"
-        
+      #- name: Show result
+      #  run: echo "${{ steps.checkin.outputs.result }}"
+  
