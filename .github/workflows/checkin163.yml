@@ -29,7 +29,7 @@ jobs:
       
       - name: Append to Summary file
         run: |
-          echo "Appending new result to checkin_result.txt" >> checkin_result.txt
+          echo "163" >> checkin_result.txt
           cat workflow_result.txt >> checkin_result.txt
         working-directory: ./ #根据需要调整工作目录
           
