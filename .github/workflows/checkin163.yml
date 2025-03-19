@@ -29,7 +29,7 @@ jobs:
       
       - name: Append to Summary file
         run: |
-          echo "\nUserID:163\n" >> checkin_result.txt
+          echo "\r\n UserID:163 \r\n" >> checkin_result.txt
           cat workflow_result.txt >> checkin_result.txt
         working-directory: ./ #根据需要调整工作目录
           
