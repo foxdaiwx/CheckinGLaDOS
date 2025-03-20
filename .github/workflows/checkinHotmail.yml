@@ -32,26 +32,3 @@ jobs:
         with:
           name: workflow-result
           path: workflow_result.txt
-      
-      
-      #- name: Append to Summary file
-       # run: |
-        #  echo "\r\n UserID:163 \r\n" >> checkin_result.txt
-         # cat workflow_result.txt >> checkin_result.txt
-        #working-directory: ./ #根据需要调整工作目录
-          
-      #- name: Upload  Summary File 
-       # uses: actions/upload-artifact@v4
-        #with:
-         # name: checkin_result
-          #path: checkin_result.txt
-
-        #以下是之前的Code，暂时保留
-        #  result=$(python checkin.py)
-        #  echo "$result" > result.txt
-        #  echo "result=$result" >> $GITHUB_OUTPUT
-
-      
-      #- name: Show result
-      #  run: echo "${{ steps.checkin.outputs.result }}"
-  

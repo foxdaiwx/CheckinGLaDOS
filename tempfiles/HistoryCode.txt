@@ -1,0 +1,40 @@
+🚩#checkin.py
+
+🌹def read_workflow_result():
+    try:
+        with open("workflow_result.txt", "r", encoding="utf-8") as file:
+            return file.read()
+    except FileNotFoundError:
+        return "未找到工作流结果文件。"
+
+🌹    # 将结果写入文本文件
+    with open("checkin_result.txt", "w", encoding="utf-8") as file:
+        file.write(result)
+    
+    # 读取并记录工作流结果
+    workflow_result = read_workflow_result()
+    with open("checkin_result.txt", "a", encoding="utf-8") as file:
+        file.write("\n\n工作流结果:\n")
+        file.write(workflow_result + "\n")
+		
+🚩#workflow
+🌹      #- name: Append to Summary file
+       # run: |
+        #  echo "\r\n UserID:163 \r\n" >> checkin_result.txt
+         # cat workflow_result.txt >> checkin_result.txt
+        #working-directory: ./ #根据需要调整工作目录
+          
+      #- name: Upload  Summary File 
+       # uses: actions/upload-artifact@v4
+        #with:
+         # name: checkin_result
+          #path: checkin_result.txt
+
+        #以下是之前的Code，暂时保留
+        #  result=$(python checkin.py)
+        #  echo "$result" > result.txt
+        #  echo "result=$result" >> $GITHUB_OUTPUT
+
+      
+      #- name: Show result
+      #  run: echo "${{ steps.checkin.outputs.result }}"
