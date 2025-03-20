@@ -1,9 +1,8 @@
-name: Checkin Hotmail 21:10 1:20
+name: Checkin Hotmail @1:10
 
 on:
   schedule:
-    - cron: '35 14 * * *'  # UTC时间14:35（北京时间22:35）
-    - cron: '20 17 * * *'  # UTC时间17:20（北京时间1:20，晚8小时）
+    - cron: '10 16 * * *'  # UTC时间17:20（北京时间晚8小时，1:30）
   workflow_dispatch:  # 允许手动触发 不要用push触发，否则每次修改代码后push都会执行，小心被平台判为机器人
 
 jobs:
@@ -11,22 +10,48 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2       #从github获取code
+        uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v2   #安装python V3.x版本
+        uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests       #安装依赖
+        run: pip install requests
 
       - name: Run checkin
         env:
           GLADOS_COOKIE: ${{ secrets.HOTMAIL_COOKIE }}
-        run: |                          #管道符“|”，表示下面有多条命令；
-          result=$(python checkin.py)   #运行主程序checkin.py
-          echo "result=$result" >> $GITHUB_OUTPUT   #结果传出
+        run: |
+          python checkin.py > hotmail_result.txt
+        working-directory: ./ #根据需要调整工作目录
+      
+      - name: upload result file
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-result
+          path: hotmail_result.txt
+      
+      
+      #- name: Append to Summary file
+       # run: |
+        #  echo "\r\n UserID:163 \r\n" >> checkin_result.txt
+         # cat workflow_result.txt >> checkin_result.txt
+        #working-directory: ./ #根据需要调整工作目录
+          
+      #- name: Upload  Summary File 
+       # uses: actions/upload-artifact@v4
+        #with:
+         # name: checkin_result
+          #path: checkin_result.txt
 
-      - name: Show result
-        run: echo "${{ steps.checkin.outputs.result }}" #显示结果
+        #以下是之前的Code，暂时保留
+        #  result=$(python checkin.py)
+        #  echo "$result" > result.txt
+        #  echo "result=$result" >> $GITHUB_OUTPUT
+
+      
+      #- name: Show result
+      #  run: echo "${{ steps.checkin.outputs.result }}"
+  
