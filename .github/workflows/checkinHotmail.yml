@@ -24,14 +24,14 @@ jobs:
         env:
           GLADOS_COOKIE: ${{ secrets.HOTMAIL_COOKIE }}
         run: |
-          python checkin.py > hotmail_result.txt
+          python checkin.py > workflow_result.txt
         working-directory: ./ #根据需要调整工作目录
       
       - name: upload result file
         uses: actions/upload-artifact@v4
         with:
           name: workflow-result
-          path: hotmail_result.txt
+          path: workflow_result.txt
       
       
       #- name: Append to Summary file

@@ -42,6 +42,13 @@ def check_in():
         points = result['list'][0]['balance']
         userid = result['list'][0]['user_id']
         return f"请求异常: {str(e)},Userid: {userid}, 总积分:{points}"
+        
+def read_workflow_result():
+    try:
+        with open("workflow_result.txt", "r", encoding="utf-8") as file:
+            return file.read()
+    except FileNotFoundError:
+        return "未找到工作流结果文件。"
 
 if __name__ == '__main__':
     result = check_in()
@@ -49,3 +56,10 @@ if __name__ == '__main__':
     # 将结果写入文本文件
     with open("checkin_result.txt", "w", encoding="utf-8") as file:
         file.write(result)
+    
+    # 读取并记录工作流结果
+    workflow_result = read_workflow_result()
+    with open("checkin_result.txt", "a", encoding="utf-8") as file:
+        file.write("\n\n工作流结果:\n")
+        file.write(workflow_result + "\n")
+        
