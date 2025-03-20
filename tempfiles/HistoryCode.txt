@@ -51,4 +51,5 @@
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Show result
-        run: cat checkin_result.txt	  
+        run: cat checkin_result.txt	 
+		
