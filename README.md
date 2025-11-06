@@ -4,7 +4,8 @@
 #### 一、 配置步骤：
 	1. 登录GLaDOS网站https://glados.space， 通过浏览器开发者工具获取Cookie;
 	2. 在GitHub仓库的 Settings > Secrets 中添加名为 `GLADOS_COOKIE` 的加密secret;
-	3. 将两个文件提交到仓库(下文提到checkin.py, checkin.ylm); checkin.py 是签到程序文件；checkin.ylm是json格式的github的工作流文件，工作流中定义了触发时间执行任务（此处任务为运行python文件checkin.py）。
+	3. 将两个文件提交到仓库(下文提到checkin.py, checkin.ylm); 
+	checkin.py 是签到程序文件；checkin.ylm是json格式的github的工作流文件，工作流中定义了触发时间执行任务（此处任务为运行python文件checkin.py）。
 
 #### 二、​获取 GLaDOS 的 Cookie
 	1. 登录 GLaDOS 并打开签到页面：https://glados.space/console/checkin。
